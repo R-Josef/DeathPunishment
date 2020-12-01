@@ -23,66 +23,66 @@ public class dpCommandExecutor implements CommandExecutor{
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if ((label.equalsIgnoreCase("deathpunishment")) || (label.equalsIgnoreCase("dp"))){ //ÊÇ²»ÊÇdpµÄÕìÌı
+		if ((label.equalsIgnoreCase("deathpunishment")) || (label.equalsIgnoreCase("dp"))){ //æ˜¯ä¸æ˜¯dpçš„ä¾¦å¬
 			
-			//"/dp help"°ïÖúÖ¸Áî
+			//"/dp help"å¸®åŠ©æŒ‡ä»¤
 			
-			if ((args.length==0)||(args[0].equalsIgnoreCase("help"))) { //°ïÖúÖ¸Áî
+			if ((args.length==0)||(args[0].equalsIgnoreCase("help"))) { //å¸®åŠ©æŒ‡ä»¤
 				if (sender instanceof Player) {
 					Player p=(Player)sender;
 					if (p.hasPermission("deathpunishment.admin.help")) {
-						p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼şÖ¸Áî°ïÖú¡ìc]");
-						p.sendMessage("¡ìcÊ¹ÓÃ¡ìf\"/deathpunishment help\"¡ìcÏÔÊ¾±¾Ò³Ãæ");
-						p.sendMessage("¡ìcÃüÁîÖĞµÄ¡ìf\"deathpunishment\"¡ìc¿ÉÌæ»»Îª¡ìe\"dp\"");
-						p.sendMessage("¡ìc/deathpunishment ¡ìfhelp¡ì7: ÏÔÊ¾°ïÖúÒ³Ãæ");
-						p.sendMessage("¡ìc/deathpunishment ¡ìfreload¡ì7: ÖØÔØ²å¼şµÄÅäÖÃÎÄ¼ş");
-						p.sendMessage("¡ìc/deathpunishment ¡ìfwhat¡ì7: ²é¿´ÊÖÉÏÎïÆ·µÄÏà¹ØĞÅÏ¢");
-						p.sendMessage("¡ìc/deathpunishment ¡ìflore¡ì7: ¸ü¸ÄÊÖÉÏÎïÆ·µÄ±êÇ©");
-						p.sendMessage("¡ìf  ©À ¡ìc/deathpunishment lore ¡ìfadd ¡ìe<±êÇ©1> [<±êÇ©2>] [<±êÇ©3>] ...¡ì7: Ìí¼ÓÈÎÒâÌõ±êÇ©");
-						p.sendMessage("¡ìf  ©À ¡ìc/deathpunishment lore ¡ìfset ¡ìe<ĞĞÊı> <±êÇ©>¡ì7: ÉèÖÃÄ³ĞĞ±êÇ©µÄÄÚÈİ");
-						p.sendMessage("¡ìf  ©¸ ¡ìc/deathpunishment lore ¡ìfremove ¡ìe<ĞĞÊı>¡ì7: É¾³ıÄ³Ò»ĞĞ±êÇ©");
+						p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶æŒ‡ä»¤å¸®åŠ©Â§c]");
+						p.sendMessage("Â§cä½¿ç”¨Â§f\"/deathpunishment help\"Â§cæ˜¾ç¤ºæœ¬é¡µé¢");
+						p.sendMessage("Â§cå‘½ä»¤ä¸­çš„Â§f\"deathpunishment\"Â§cå¯æ›¿æ¢ä¸ºÂ§e\"dp\"");
+						p.sendMessage("Â§c/deathpunishment Â§fhelpÂ§7: æ˜¾ç¤ºå¸®åŠ©é¡µé¢");
+						p.sendMessage("Â§c/deathpunishment Â§freloadÂ§7: é‡è½½æ’ä»¶çš„é…ç½®æ–‡ä»¶");
+						p.sendMessage("Â§c/deathpunishment Â§fwhatÂ§7: æŸ¥çœ‹æ‰‹ä¸Šç‰©å“çš„ç›¸å…³ä¿¡æ¯");
+						p.sendMessage("Â§c/deathpunishment Â§floreÂ§7: æ›´æ”¹æ‰‹ä¸Šç‰©å“çš„æ ‡ç­¾");
+						p.sendMessage("Â§f  â”œ Â§c/deathpunishment lore Â§fadd Â§e<æ ‡ç­¾1> [<æ ‡ç­¾2>] [<æ ‡ç­¾3>] ...Â§7: æ·»åŠ ä»»æ„æ¡æ ‡ç­¾");
+						p.sendMessage("Â§f  â”œ Â§c/deathpunishment lore Â§fset Â§e<è¡Œæ•°> <æ ‡ç­¾>Â§7: è®¾ç½®æŸè¡Œæ ‡ç­¾çš„å†…å®¹");
+						p.sendMessage("Â§f  â”” Â§c/deathpunishment lore Â§fremove Â§e<è¡Œæ•°>Â§7: åˆ é™¤æŸä¸€è¡Œæ ‡ç­¾");
 					}else{
-						p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÄãµÄÈ¨ÏŞ²»×ã£¡");
+						p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cä½ çš„æƒé™ä¸è¶³ï¼");
 					}
 				}else{
-					sender.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼şÖ¸Áî°ïÖú¡ìc]");
-					sender.sendMessage("¡ìcÊ¹ÓÃ¡ìf\"/deathpunishment help\"¡ìcÏÔÊ¾±¾Ò³Ãæ");
-					sender.sendMessage("¡ìcÃüÁîÖĞµÄ¡ìf\"deathpunishment\"¡ìc¿ÉÌæ»»Îª¡ìe\"dp\"");
-					sender.sendMessage("¡ìc/deathpunishment ¡ìfhelp¡ì7: ÏÔÊ¾°ïÖúÒ³Ãæ");
-					sender.sendMessage("¡ìc/deathpunishment ¡ìfreload¡ì7: ÖØÔØ²å¼şµÄÅäÖÃÎÄ¼ş");
-					sender.sendMessage("¡ìc/deathpunishment ¡ìfwhat¡ì7: ²é¿´ÊÖÉÏÎïÆ·µÄÏà¹ØĞÅÏ¢");
-					sender.sendMessage("¡ìc/deathpunishment ¡ìflore¡ì7: ¸ü¸ÄÊÖÉÏÎïÆ·µÄ±êÇ©");
-					sender.sendMessage("¡ìf  ©À ¡ìc/deathpunishment lore ¡ìfadd ¡ìe<±êÇ©1> [<±êÇ©2>] [<±êÇ©3>] ...¡ì7: Ìí¼ÓÈÎÒâÌõ±êÇ©");
-					sender.sendMessage("¡ìf  ©À ¡ìc/deathpunishment lore ¡ìfset ¡ìe<ĞĞÊı> <±êÇ©>¡ì7: ÉèÖÃÄ³ĞĞ±êÇ©µÄÄÚÈİ");
-					sender.sendMessage("¡ìf  ©¸ ¡ìc/deathpunishment lore ¡ìfremove ¡ìe<ĞĞÊı>¡ì7: É¾³ıÄ³Ò»ĞĞ±êÇ©");
+					sender.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶æŒ‡ä»¤å¸®åŠ©Â§c]");
+					sender.sendMessage("Â§cä½¿ç”¨Â§f\"/deathpunishment help\"Â§cæ˜¾ç¤ºæœ¬é¡µé¢");
+					sender.sendMessage("Â§cå‘½ä»¤ä¸­çš„Â§f\"deathpunishment\"Â§cå¯æ›¿æ¢ä¸ºÂ§e\"dp\"");
+					sender.sendMessage("Â§c/deathpunishment Â§fhelpÂ§7: æ˜¾ç¤ºå¸®åŠ©é¡µé¢");
+					sender.sendMessage("Â§c/deathpunishment Â§freloadÂ§7: é‡è½½æ’ä»¶çš„é…ç½®æ–‡ä»¶");
+					sender.sendMessage("Â§c/deathpunishment Â§fwhatÂ§7: æŸ¥çœ‹æ‰‹ä¸Šç‰©å“çš„ç›¸å…³ä¿¡æ¯");
+					sender.sendMessage("Â§c/deathpunishment Â§floreÂ§7: æ›´æ”¹æ‰‹ä¸Šç‰©å“çš„æ ‡ç­¾");
+					sender.sendMessage("Â§f  â”œ Â§c/deathpunishment lore Â§fadd Â§e<æ ‡ç­¾1> [<æ ‡ç­¾2>] [<æ ‡ç­¾3>] ...Â§7: æ·»åŠ ä»»æ„æ¡æ ‡ç­¾");
+					sender.sendMessage("Â§f  â”œ Â§c/deathpunishment lore Â§fset Â§e<è¡Œæ•°> <æ ‡ç­¾>Â§7: è®¾ç½®æŸè¡Œæ ‡ç­¾çš„å†…å®¹");
+					sender.sendMessage("Â§f  â”” Â§c/deathpunishment lore Â§fremove Â§e<è¡Œæ•°>Â§7: åˆ é™¤æŸä¸€è¡Œæ ‡ç­¾");
 				}
 			}
 			
-			//"/dp what"²éÑ¯Ö¸Áî
+			//"/dp what"æŸ¥è¯¢æŒ‡ä»¤
 			
-			if (args[0].equalsIgnoreCase("what")) { //²é¿´ÎïÆ·Ãû³Æ
+			if (args[0].equalsIgnoreCase("what")) { //æŸ¥çœ‹ç‰©å“åç§°
 				if (sender instanceof Player) {
 					Player p=(Player)sender;
 					if (p.hasPermission("deathpunishment.admin.what")) {
-						p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ì8ÄãÊÖÉÏµÄÎïÆ·idÊÇ ¡ìf"+p.getInventory().getItemInMainHand().getType().toString());
-						p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ì8×¢Òâ´óĞ¡Ğ´£¡ ¡ìf");
-						p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ì8ÄãµÄÓïÑÔÊÇ ¡ìf"+p.getLocale());
-						p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ì8ÄãËùÔÚµÄÊÀ½çÊÇ ¡ìf"+p.getLocation().getWorld().getName());
-						//ÏÔÊ¾¸½Ä§µÄÃû×Ö
+						p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§8ä½ æ‰‹ä¸Šçš„ç‰©å“idæ˜¯ Â§f"+p.getInventory().getItemInMainHand().getType().toString());
+						p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§8æ³¨æ„å¤§å°å†™ï¼ Â§f");
+						p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§8ä½ çš„è¯­è¨€æ˜¯ Â§f"+p.getLocale());
+						p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§8ä½ æ‰€åœ¨çš„ä¸–ç•Œæ˜¯ Â§f"+p.getLocation().getWorld().getName());
+						//æ˜¾ç¤ºé™„é­”çš„åå­—
 						if ((p.getInventory().getItemInMainHand().hasItemMeta())&&((p.getInventory().getItemInMainHand().getItemMeta().hasEnchants()))){
-							p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ì8ÄãÊÖÉÏÎïÆ·µÄ¸½Ä§Îª¡ìf:"+p.getInventory().getItemInMainHand().getItemMeta().getEnchants().toString());
+							p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§8ä½ æ‰‹ä¸Šç‰©å“çš„é™„é­”ä¸ºÂ§f:"+p.getInventory().getItemInMainHand().getItemMeta().getEnchants().toString());
 						}
 					}else {
-						p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÄãµÄÈ¨ÏŞ²»×ã£¡");
+						p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cä½ çš„æƒé™ä¸è¶³ï¼");
 					}
 				}else{
-					sender.sendMessage("¡ìcÕâ¸öÃüÁîÖ»ÓĞÍæ¼ÒÄÜÓÃ£¡");
+					sender.sendMessage("Â§cè¿™ä¸ªå‘½ä»¤åªæœ‰ç©å®¶èƒ½ç”¨ï¼");
 				}
 			}
 			
-			//"/dp reload"ÖØÔØÅäÖÃ
+			//"/dp reload"é‡è½½é…ç½®
 			
-			if (args[0].equalsIgnoreCase("reload")) { //ÖØÔØ²å¼şÅäÖÃ
+			if (args[0].equalsIgnoreCase("reload")) { //é‡è½½æ’ä»¶é…ç½®
 				
 				if (sender.hasPermission("deathpunishment.admin.reload")) {
 					try {
@@ -90,24 +90,24 @@ public class dpCommandExecutor implements CommandExecutor{
 							dp.getDataFolder().mkdir();
 						}
 						
-						//ÅäÖÃÎÄ¼ş
+						//é…ç½®æ–‡ä»¶
 						File config = new File(dp.getDataFolder(),"config.yml");
 						if (!(config.exists())) {
 							dp.saveDefaultConfig();
 						}
 						dp.reloadConfig();
-						sender.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ì8²å¼şÅäÖÃÒÑÖØÔØ£¡");
+						sender.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§8æ’ä»¶é…ç½®å·²é‡è½½ï¼");
 					}catch(Exception e) {
 						e.printStackTrace();
 					}
 				}else {
-					sender.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÄãµÄÈ¨ÏŞ²»×ã£¡");
+					sender.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cä½ çš„æƒé™ä¸è¶³ï¼");
 				}
 			}
 			
-			//"/dp lore"ĞŞ¸ÄLore
+			//"/dp lore"ä¿®æ”¹Lore
 			
-			if (args[0].equalsIgnoreCase("lore")) { //²é¿´ÎïÆ·Ãû³Æ
+			if (args[0].equalsIgnoreCase("lore")) { //æŸ¥çœ‹ç‰©å“åç§°
 				if (sender instanceof Player) {
 					Player p=(Player)sender;
 					if (p.hasPermission("deathpunishment.admin.lore")) {
@@ -118,7 +118,7 @@ public class dpCommandExecutor implements CommandExecutor{
 										if (p.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
 											List<String> lorelist = p.getInventory().getItemInMainHand().getItemMeta().getLore();
 											for(int i=2;i<args.length;i++) {
-												lorelist.add(StringUtils.replace(args[i], "&", "¡ì"));
+												lorelist.add(StringUtils.replace(args[i], "&", "Â§"));
 											}
 											ItemMeta meta = p.getInventory().getItemInMainHand().getItemMeta();
 											meta.setLore(lorelist);
@@ -126,20 +126,20 @@ public class dpCommandExecutor implements CommandExecutor{
 										}else {
 											List<String> lorelist = new ArrayList<>();
 											for(int i=2;i<args.length;i++) {
-												lorelist.add(StringUtils.replace(args[i], "&", "¡ì"));
+												lorelist.add(StringUtils.replace(args[i], "&", "Â§"));
 											}
 											ItemMeta meta = p.getInventory().getItemInMainHand().getItemMeta();
 											meta.setLore(lorelist);
 											p.getInventory().getItemInMainHand().setItemMeta(meta);
 										}
-										p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìc³É¹¦Ìí¼Ó±êÇ©£¡");
+										p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cæˆåŠŸæ·»åŠ æ ‡ç­¾ï¼");
 										return true;
 									}else{
-										p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÄãÊÇÏë¸ø¿ÕÆø¼ÓÉÏ±êÇ©Âğ£¨ÃÔ»ó£©£¿");
+										p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cä½ æ˜¯æƒ³ç»™ç©ºæ°”åŠ ä¸Šæ ‡ç­¾å—ï¼ˆè¿·æƒ‘ï¼‰ï¼Ÿ");
 										return true;
 									}
 								}else {
-									p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìc¸ñÊ½´íÎó£¡Ê¹ÓÃ·½Ê½£º/dp lore add <±êÇ©ÎÄ±¾> <±êÇ©ÎÄ±¾> <...>");
+									p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cæ ¼å¼é”™è¯¯ï¼ä½¿ç”¨æ–¹å¼ï¼š/dp lore add <æ ‡ç­¾æ–‡æœ¬> <æ ‡ç­¾æ–‡æœ¬> <...>");
 									return true;
 								}
 							}
@@ -149,26 +149,26 @@ public class dpCommandExecutor implements CommandExecutor{
 										if (p.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
 											try {
 												List<String> lorelist = p.getInventory().getItemInMainHand().getItemMeta().getLore();
-												lorelist.set(Integer.valueOf(args[2])-1, StringUtils.replace(args[3], "&", "¡ì"));
+												lorelist.set(Integer.valueOf(args[2])-1, StringUtils.replace(args[3], "&", "Â§"));
 												ItemMeta meta = p.getInventory().getItemInMainHand().getItemMeta();
 												meta.setLore(lorelist);
 												p.getInventory().getItemInMainHand().setItemMeta(meta);
-												p.sendMessage(String.format("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ì7³É¹¦½«µÚ¡ìf%s¡ì7ĞĞµÄ±êÇ©ĞŞ¸ÄÎª %s",args[2],StringUtils.replace(args[3], "&", "¡ì")));
+												p.sendMessage(String.format("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§7æˆåŠŸå°†ç¬¬Â§f%sÂ§7è¡Œçš„æ ‡ç­¾ä¿®æ”¹ä¸º %s",args[2],StringUtils.replace(args[3], "&", "Â§")));
 											}catch (Exception e) {
-												p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÖ¸ÁîÖ´ĞĞ¹ı³Ì·¢Éú´íÎó£¡ÄãÓĞÕıÈ·µØÉèÖÃ±äÁ¿Âğ£¿Ê¹ÓÃ·½Ê½£º/dp lore set <ĞòºÅ> <±êÇ©ÎÄ±¾>");
+												p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cæŒ‡ä»¤æ‰§è¡Œè¿‡ç¨‹å‘ç”Ÿé”™è¯¯ï¼ä½ æœ‰æ­£ç¡®åœ°è®¾ç½®å˜é‡å—ï¼Ÿä½¿ç”¨æ–¹å¼ï¼š/dp lore set <åºå·> <æ ‡ç­¾æ–‡æœ¬>");
 												e.printStackTrace();
 												return false;
 											}
 										}else {
-											p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÎïÆ·Á¬±êÇ©¶¼Ã»ÓĞ£¬ÄãÔÚÉèÖÃÉ¶£¨ÃÔ»ó£©£¿");
+											p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cç‰©å“è¿æ ‡ç­¾éƒ½æ²¡æœ‰ï¼Œä½ åœ¨è®¾ç½®å•¥ï¼ˆè¿·æƒ‘ï¼‰ï¼Ÿ");
 										}
 										return true;
 									}else{
-										p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÄãÊÇÏë¸ø¿ÕÆø¼ÓÉÏ±êÇ©Âğ£¨ÃÔ»ó£©£¿");
+										p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cä½ æ˜¯æƒ³ç»™ç©ºæ°”åŠ ä¸Šæ ‡ç­¾å—ï¼ˆè¿·æƒ‘ï¼‰ï¼Ÿ");
 										return true;
 									}
 								}else {
-									p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìc¸ñÊ½´íÎó£¡Ê¹ÓÃ·½Ê½£º/dp lore set <ĞòºÅ> <±êÇ©ÎÄ±¾>");
+									p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cæ ¼å¼é”™è¯¯ï¼ä½¿ç”¨æ–¹å¼ï¼š/dp lore set <åºå·> <æ ‡ç­¾æ–‡æœ¬>");
 									return true;
 								}
 							}
@@ -182,34 +182,34 @@ public class dpCommandExecutor implements CommandExecutor{
 												ItemMeta meta = p.getInventory().getItemInMainHand().getItemMeta();
 												meta.setLore(lorelist);
 												p.getInventory().getItemInMainHand().setItemMeta(meta);
-												p.sendMessage(String.format("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ì7³É¹¦½«µÚ¡ìf%s¡ì7ÒÆ³ı",args[2]));
+												p.sendMessage(String.format("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§7æˆåŠŸå°†ç¬¬Â§f%sÂ§7ç§»é™¤",args[2]));
 											}catch (Exception e) {
-												p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÖ¸ÁîÖ´ĞĞ¹ı³Ì·¢Éú´íÎó£¡ÄãÓĞÕıÈ·µØÉèÖÃ±äÁ¿Âğ£¿Ê¹ÓÃ·½Ê½£º/dp lore remove <ĞòºÅ>");
+												p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cæŒ‡ä»¤æ‰§è¡Œè¿‡ç¨‹å‘ç”Ÿé”™è¯¯ï¼ä½ æœ‰æ­£ç¡®åœ°è®¾ç½®å˜é‡å—ï¼Ÿä½¿ç”¨æ–¹å¼ï¼š/dp lore remove <åºå·>");
 												e.printStackTrace();
 												return false;
 											}
 										}else {
-											p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÎïÆ·Á¬±êÇ©¶¼Ã»ÓĞ£¬ÄãÔÚÉèÖÃÉ¶£¨ÃÔ»ó£©£¿");
+											p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cç‰©å“è¿æ ‡ç­¾éƒ½æ²¡æœ‰ï¼Œä½ åœ¨è®¾ç½®å•¥ï¼ˆè¿·æƒ‘ï¼‰ï¼Ÿ");
 										}
 										return true;
 									}else{
-										p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÄãÊÇÏë¸ø¿ÕÆø¼ÓÉÏ±êÇ©Âğ£¨ÃÔ»ó£©£¿");
+										p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cä½ æ˜¯æƒ³ç»™ç©ºæ°”åŠ ä¸Šæ ‡ç­¾å—ï¼ˆè¿·æƒ‘ï¼‰ï¼Ÿ");
 										return true;
 									}
 								}else {
-									p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìc¸ñÊ½´íÎó£¡Ê¹ÓÃ·½Ê½£º/dp lore remove <ĞòºÅ>");
+									p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cæ ¼å¼é”™è¯¯ï¼ä½¿ç”¨æ–¹å¼ï¼š/dp lore remove <åºå·>");
 									return true;
 								}
 							}
-							p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìc¸ñÊ½´íÎó£¡Ê¹ÓÃ·½Ê½£º/dp lore <add/set/remove>");
+							p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cæ ¼å¼é”™è¯¯ï¼ä½¿ç”¨æ–¹å¼ï¼š/dp lore <add/set/remove>");
 						}else {
-							p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìc¸ñÊ½´íÎó£¡Ê¹ÓÃ·½Ê½£º/dp lore <add/set/remove>");
+							p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cæ ¼å¼é”™è¯¯ï¼ä½¿ç”¨æ–¹å¼ï¼š/dp lore <add/set/remove>");
 						}
 					}else {
-						p.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÄãµÄÈ¨ÏŞ²»×ã£¡");
+						p.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cä½ çš„æƒé™ä¸è¶³ï¼");
 					}
 				}else{
-					sender.sendMessage("¡ìc[¡ìfËÀÍö³Í·£²å¼ş¡ìc]¡ìf:¡ìcÕâ¸öÃüÁîÖ»ÓĞÍæ¼ÒÄÜÓÃ£¡");
+					sender.sendMessage("Â§c[Â§fæ­»äº¡æƒ©ç½šæ’ä»¶Â§c]Â§f:Â§cè¿™ä¸ªå‘½ä»¤åªæœ‰ç©å®¶èƒ½ç”¨ï¼");
 				}
 			}
 			

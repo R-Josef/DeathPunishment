@@ -56,7 +56,7 @@ public class dpFile {
 	            } else {
 	                charStr = unicode.substring(start + 2, end);
 	            }
-	            char letter = (char) Integer.parseInt(charStr, 16); // 16½øÖÆparseÕûĞÎ×Ö·û´®¡£
+	            char letter = (char) Integer.parseInt(charStr, 16); // 16è¿›åˆ¶parseæ•´å½¢å­—ç¬¦ä¸²ã€‚
 	            buffer.append(new Character(letter).toString());
 	            start = end;
 			}
@@ -66,8 +66,8 @@ public class dpFile {
 	}
 	public static String getLocaleName(Material material,String locale) {
 		String result = material.toString();
-		if (deathPunishment.langhash.containsKey(locale+".lang")) {
-			JSONObject lang = deathPunishment.langhash.get(locale+".lang");
+		if (DeathPunishment.langhash.containsKey(locale+".lang")) {
+			JSONObject lang = DeathPunishment.langhash.get(locale+".lang");
 			if (material.isBlock()) {
 				if (!(lang.get("block.minecraft."+material.toString().toLowerCase())==null)) {
 					result = (String)lang.get("block.minecraft."+material.toString().toLowerCase());
@@ -81,8 +81,8 @@ public class dpFile {
 		return StringUtils.replaceChars(result.toLowerCase(),'_',' ');
 	}
 	public static String getLocaleMessage(String message,String locale,String def) {
-		if (deathPunishment.langhash.containsKey(locale+".lang")) {
-			JSONObject lang = deathPunishment.langhash.get(locale+".lang");
+		if (DeathPunishment.langhash.containsKey(locale+".lang")) {
+			JSONObject lang = DeathPunishment.langhash.get(locale+".lang");
 			if (!(lang.get("deathPunishment.message."+message)==null)) {
 				message = (String)lang.get("deathPunishment.message."+message);
 				return message;
@@ -103,7 +103,7 @@ public class dpFile {
 				String jsonString = readFileToString(file);
 				jsonObject = (JSONObject) JSONValue.parse(jsonString);
 				langHash.put(file.getName(),jsonObject);
-				System.out.println("ÓïÑÔ"+file.getName()+"ÒÑ¼ÓÔØ£¡");
+				System.out.println("è¯­è¨€"+file.getName()+"å·²åŠ è½½ï¼");
 				//System.out.println(jsonObject.toJSONString());
 			}
 		}
@@ -111,12 +111,12 @@ public class dpFile {
 		return langHash;
 	}
     public static String readFileToString(File file) {
-        // ¶¨Òå·µ»Ø½á¹û
+        // å®šä¹‰è¿”å›ç»“æœ
         String jsonString = "";
 
         BufferedReader in = null;
         try {
-            in = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));// ¶ÁÈ¡ÎÄ¼ş  
+            in = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));// è¯»å–æ–‡ä»¶  
             String thisLine = null;
             while ((thisLine = in.readLine()) != null) {
                 jsonString += thisLine;
@@ -133,7 +133,7 @@ public class dpFile {
             }
         }
         //jsonString = StringUtils.deleteWhitespace(jsonString);
-        // ·µ»ØÆ´½ÓºÃµÄJSON String
+        // è¿”å›æ‹¼æ¥å¥½çš„JSON String
         return jsonString;
     }
 }

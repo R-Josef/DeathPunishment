@@ -17,7 +17,7 @@ import org.json.simple.JSONObject;
 
 import net.milkbowl.vault.economy.Economy;
 
-public class deathPunishment extends JavaPlugin implements Listener{
+public class DeathPunishment extends JavaPlugin implements Listener{
 	
 	public static HashMap<String, String> loghash = new HashMap<>();
 	public static HashMap<String, JSONObject> langhash = new HashMap<>();
@@ -29,34 +29,34 @@ public class deathPunishment extends JavaPlugin implements Listener{
 		
 		//vault
 		
-        //³õÊ¼»¯Vault Economy API
-        //¿ÉÒÔ¸ù¾İÊµ¼ÊĞèÒª½øĞĞĞŞ¸Ä
+        //åˆå§‹åŒ–Vault Economy API
+        //å¯ä»¥æ ¹æ®å®é™…éœ€è¦è¿›è¡Œä¿®æ”¹
 		if (getServer().getPluginManager().getPlugin("Vault")!=null) {
 			RegisteredServiceProvider<Economy> vaultEcoAPI = getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
         	if (vaultEcoAPI != null) {
         		if ((economy = vaultEcoAPI.getProvider())!=null){
         			economyEnabled = true;
-        			getLogger().info("VaultÔËĞĞÕı³££¡ÒÑÆôÓÃ¾­¼ÃÏà¹Ø¹¦ÄÜ");
+        			getLogger().info("Vaultè¿è¡Œæ­£å¸¸ï¼å·²å¯ç”¨ç»æµç›¸å…³åŠŸèƒ½");
         		}
         	}else {
-        		getLogger().info("VaultÎ´ÅäÖÃÕıÈ·£¡ÒÑ½ûÓÃ¾­¼ÃÏà¹Ø¹¦ÄÜ");
+        		getLogger().info("Vaultæœªé…ç½®æ­£ç¡®ï¼å·²ç¦ç”¨ç»æµç›¸å…³åŠŸèƒ½");
         	}
         }else{
-        	getLogger().info("VaultÎ´°²×°£¡ÒÑ½ûÓÃ¾­¼ÃÏà¹Ø¹¦ÄÜ");
+        	getLogger().info("Vaultæœªå®‰è£…ï¼å·²ç¦ç”¨ç»æµç›¸å…³åŠŸèƒ½");
         }
 		
 		if (!(getDataFolder().exists())){
 			this.getDataFolder().mkdir();
 		}
 		
-		//ÅäÖÃÎÄ¼ş
+		//é…ç½®æ–‡ä»¶
 		File config = new File(getDataFolder(),"config.yml");
 		if (!(config.exists())) {
 			this.saveDefaultConfig();
 		}
 		reloadConfig();
 		
-		getLogger().info("ÅäÖÃÎÄ¼ş°æ±¾:"+getConfig().getString("version"));
+		getLogger().info("é…ç½®æ–‡ä»¶ç‰ˆæœ¬:"+getConfig().getString("version"));
 		if (getConfig().getString("version").equals("1.1")) {
 			getConfig().set("Locale", true);
 			getConfig().set("LowVersionMode.Enabled", false);
@@ -64,10 +64,10 @@ public class deathPunishment extends JavaPlugin implements Listener{
 			getConfig().set("LowVersionMode.Subtitle", "{\"text\":\"This server is running a low version\",\"color\":\"red\"}");
 			getConfig().set("version", "1.2");
 			saveConfig();
-			getLogger().info("ÅäÖÃÎÄ¼ş°æ±¾ÒÑÉı¼¶µ½v1.1£¡");
+			getLogger().info("é…ç½®æ–‡ä»¶ç‰ˆæœ¬å·²å‡çº§åˆ°v1.1ï¼");
 		}
 		
-		//Íæ¼ÒËÀÍöÊÀ½çÊı¾İ
+		//ç©å®¶æ­»äº¡ä¸–ç•Œæ•°æ®
 		
 		File logfile = new File(getDataFolder(),"log.bin");
 		if (logfile.exists()) {
@@ -75,9 +75,9 @@ public class deathPunishment extends JavaPlugin implements Listener{
 		}else {
 			dpFile.saveMap(loghash, getDataFolder().getPath()+"\\log.bin");
 		}
-		this.getLogger().info("Êı¾İÎÄ¼ş"+getDataFolder().getPath()+"\\log.bin"+"ÒÑ¹ÒÔØ");
+		this.getLogger().info("æ•°æ®æ–‡ä»¶"+getDataFolder().getPath()+"\\log.bin"+"å·²æŒ‚è½½");
 		
-		//ÓïÑÔÎÄ¼ş
+		//è¯­è¨€æ–‡ä»¶
 		
 		File langfile = new File(getDataFolder(),"lang");
 		if (!(langfile.exists())) {
@@ -112,9 +112,9 @@ public class deathPunishment extends JavaPlugin implements Listener{
 		}
 		langhash = dpFile.loadLangs(getDataFolder().getPath()+"\\lang");
 		
-		//×¢²áÃüÁîÖ´ĞĞÀà
+		//æ³¨å†Œå‘½ä»¤æ‰§è¡Œç±»
 		this.getCommand("deathpunishment").setExecutor(new dpCommandExecutor(this));
-		//×¢²áÊÂ¼ş
+		//æ³¨å†Œäº‹ä»¶
 		this.getServer().getPluginManager().registerEvents(new dpPlayerDeathEventListener(this), this);
 		this.getServer().getPluginManager().registerEvents(new dpPlayerRespawnEventListener(this), this);
 		if (getConfig().getBoolean("LowVersionMode.Enabled")) {
@@ -124,7 +124,7 @@ public class deathPunishment extends JavaPlugin implements Listener{
 		}
 		this.getServer().getPluginManager().registerEvents(this, this);
 		
-		getLogger().info("deathPunishmentËÀÍö³Í·£²å¼şÒÑÆôÓÃ!");
+		getLogger().info("deathPunishmentæ­»äº¡æƒ©ç½šæ’ä»¶å·²å¯ç”¨!");
 	}
 	public void onDisable() {
 		if (!(getDataFolder().exists())){
@@ -138,7 +138,7 @@ public class deathPunishment extends JavaPlugin implements Listener{
 	
 	@EventHandler
 	public void onInventoryPickupItem(InventoryPickupItemEvent event) {
-		if ((event.getItem().getItemStack().hasItemMeta())&&(event.getItem().getItemStack().getItemMeta().hasLore())&&(event.getItem().getItemStack().getItemMeta().getLore().contains("¡ìc½ğÇ®µôÂä"))) {
+		if ((event.getItem().getItemStack().hasItemMeta())&&(event.getItem().getItemStack().getItemMeta().hasLore())&&(event.getItem().getItemStack().getItemMeta().getLore().contains("Â§cé‡‘é’±æ‰è½"))) {
 			event.setCancelled(true);
 		}
 	}

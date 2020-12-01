@@ -19,8 +19,8 @@ public class dpEntityPickupItemEventListener implements Listener{
 	
 	@EventHandler(priority = EventPriority.LOW)
 	public void onEntityPickupItem(EntityPickupItemEvent event) {
-		if ((event.getItem().getItemStack().hasItemMeta())&&(event.getItem().getItemStack().getItemMeta().hasLore())&&(event.getItem().getItemStack().getItemMeta().getLore().contains("¡ìc½ğÇ®µôÂä"))) {
-			if (deathPunishment.economyEnabled) {
+		if ((event.getItem().getItemStack().hasItemMeta())&&(event.getItem().getItemStack().getItemMeta().hasLore())&&(event.getItem().getItemStack().getItemMeta().getLore().contains("Â§cé‡‘é’±æ‰è½"))) {
+			if (DeathPunishment.economyEnabled) {
 				if (event.getEntityType().equals(EntityType.PLAYER)) {
 					OfflinePlayer offlinePlayer = (OfflinePlayer)event.getEntity();
 					double money = Double.parseDouble(event.getItem().getItemStack().getItemMeta().getLore().get(1));
@@ -30,7 +30,7 @@ public class dpEntityPickupItemEventListener implements Listener{
 						locale = ((Player) event.getEntity()).getLocale();
 					}
 					
-					deathPunishment.economy.depositPlayer(offlinePlayer, money);
+					DeathPunishment.economy.depositPlayer(offlinePlayer, money);
 					event.getItem().remove();
 					event.getEntity().sendMessage(String.format(dpFile.getLocaleMessage("lootpickup", locale, dp.getConfig().getString("Messages.lootpickup")),""+money));
 					event.setCancelled(true);

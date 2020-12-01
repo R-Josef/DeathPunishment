@@ -25,7 +25,7 @@ public class dpPlayerRespawnEventListener implements Listener{
 		if (dp.getConfig().contains("Enabled")) {
 			
 			Player player = event.getPlayer();
-			String deathworld = deathPunishment.loghash.getOrDefault(player.getName(), "");
+			String deathworld = DeathPunishment.loghash.getOrDefault(player.getName(), "");
 			if (dp.getConfig().contains(deathworld)) {
 				deathworld = deathworld+".";
 			}else {
@@ -38,8 +38,8 @@ public class dpPlayerRespawnEventListener implements Listener{
 				locale = player.getLocale();
 			}
 			
-			if (dp.getConfig().getBoolean("Enabled")) {  //¼ì²éÊÇ·ñÆôÓÃ
-				if (dp.getConfig().getBoolean("SurvivalOnly")) {  //¼ì²éÊÇ·ñ½öÏŞÉú´æ
+			if (dp.getConfig().getBoolean("Enabled")) {  //æ£€æŸ¥æ˜¯å¦å¯ç”¨
+				if (dp.getConfig().getBoolean("SurvivalOnly")) {  //æ£€æŸ¥æ˜¯å¦ä»…é™ç”Ÿå­˜
 					if (player.getGameMode().equals(GameMode.CREATIVE)) {
 						gamemode = false;
 					}

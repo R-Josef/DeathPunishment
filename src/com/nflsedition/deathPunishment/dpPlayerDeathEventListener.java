@@ -32,7 +32,6 @@ public class dpPlayerDeathEventListener implements Listener{
         this.dp = plugin; // Store the plugin in situations where you need it.
     }
     
-	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.LOW)
 	
 	public void onPlayerDeath(PlayerDeathEvent event){
@@ -66,10 +65,10 @@ public class dpPlayerDeathEventListener implements Listener{
 				messagehash.put(entry.getKey(), dpFile.getLocaleMessage(entry.getKey(), locale, entry.getValue()));
 			}
 			
-			//¼ÇÂ¼ËÀÍöÊÀ½ç
-			deathPunishment.loghash.put(player.getName(), worldname);
+			//è®°å½•æ­»äº¡ä¸–ç•Œ
+			DeathPunishment.loghash.put(player.getName(), worldname);
 			
-			//µôÂäÎïÆ·
+			//æ‰è½ç‰©å“
 			
 			//boolean Slots[] = new boolean[41];
 			String namestring = "";
@@ -80,8 +79,8 @@ public class dpPlayerDeathEventListener implements Listener{
 				Slots.add(i);
 			}
 			
-			if (dp.getConfig().getBoolean("Enabled")) {  //¼ì²éÊÇ·ñÆôÓÃ
-				if (dp.getConfig().getBoolean("SurvivalOnly")) {  //¼ì²éÊÇ·ñ½öÏŞÉú´æ
+			if (dp.getConfig().getBoolean("Enabled")) {  //æ£€æŸ¥æ˜¯å¦å¯ç”¨
+				if (dp.getConfig().getBoolean("SurvivalOnly")) {  //æ£€æŸ¥æ˜¯å¦ä»…é™ç”Ÿå­˜
 					if (player.getGameMode().equals(GameMode.CREATIVE)) {
 						gamemode = false;
 					}
@@ -94,9 +93,9 @@ public class dpPlayerDeathEventListener implements Listener{
 					if (dp.getConfig().contains(worldname))
 						worlddir = worldname+".";
 					
-					//µôÂä½ğÇ®
+					//æ‰è½é‡‘é’±
 					
-					if ((dp.getConfig().getBoolean(worlddir+"DropMoney.Enabled"))&&(deathPunishment.economyEnabled)){
+					if ((dp.getConfig().getBoolean(worlddir+"DropMoney.Enabled"))&&(DeathPunishment.economyEnabled)){
 						String mode = dp.getConfig().getString(worlddir+"DropMoney.Mode");
 						Random random = new Random();
 						if (mode != null) {
@@ -105,16 +104,16 @@ public class dpPlayerDeathEventListener implements Listener{
 								case "Fixed": {
 									double money = dp.getConfig().getDouble(worlddir+"DropMoney.Fixed.Money");
 									OfflinePlayer offlinePlayer = (OfflinePlayer)player;
-									if (deathPunishment.economy.hasAccount(offlinePlayer)){
-										if (deathPunishment.economy.getBalance(offlinePlayer)>=money) {
-											deathPunishment.economy.withdrawPlayer(offlinePlayer, money);
+									if (DeathPunishment.economy.hasAccount(offlinePlayer)){
+										if (DeathPunishment.economy.getBalance(offlinePlayer)>=money) {
+											DeathPunishment.economy.withdrawPlayer(offlinePlayer, money);
 											amount = money;
 										}else {
-											deathPunishment.economy.withdrawPlayer(offlinePlayer, deathPunishment.economy.getBalance(offlinePlayer));
-											amount = deathPunishment.economy.getBalance(offlinePlayer);
+											DeathPunishment.economy.withdrawPlayer(offlinePlayer, DeathPunishment.economy.getBalance(offlinePlayer));
+											amount = DeathPunishment.economy.getBalance(offlinePlayer);
 										}
 									}else {
-										deathPunishment.economy.createPlayerAccount(offlinePlayer);
+										DeathPunishment.economy.createPlayerAccount(offlinePlayer);
 									}
 									break;
 								}
@@ -126,16 +125,16 @@ public class dpPlayerDeathEventListener implements Listener{
 									BigDecimal bigDecimal = new BigDecimal(moneyraw);
 									double money = bigDecimal.setScale(digit,BigDecimal.ROUND_HALF_UP).doubleValue();
 									OfflinePlayer offlinePlayer = (OfflinePlayer)player;
-									if (deathPunishment.economy.hasAccount(offlinePlayer)){
-										if (deathPunishment.economy.getBalance(offlinePlayer)>=money) {
-											deathPunishment.economy.withdrawPlayer(offlinePlayer, money);
+									if (DeathPunishment.economy.hasAccount(offlinePlayer)){
+										if (DeathPunishment.economy.getBalance(offlinePlayer)>=money) {
+											DeathPunishment.economy.withdrawPlayer(offlinePlayer, money);
 											amount = money;
 										}else {
-											deathPunishment.economy.withdrawPlayer(offlinePlayer, deathPunishment.economy.getBalance(offlinePlayer));
-											amount = deathPunishment.economy.getBalance(offlinePlayer);
+											DeathPunishment.economy.withdrawPlayer(offlinePlayer, DeathPunishment.economy.getBalance(offlinePlayer));
+											amount = DeathPunishment.economy.getBalance(offlinePlayer);
 										}
 									}else {
-										deathPunishment.economy.createPlayerAccount(offlinePlayer);
+										DeathPunishment.economy.createPlayerAccount(offlinePlayer);
 									}
 									break;
 								}
@@ -143,23 +142,23 @@ public class dpPlayerDeathEventListener implements Listener{
 									double moneyrate = dp.getConfig().getDouble(worlddir+"DropMoney.Rate.MoneyRate");
 									int digit = dp.getConfig().getInt(worlddir+"DropMoney.Random.DigitAfterDot");
 									OfflinePlayer offlinePlayer = (OfflinePlayer)player;
-									double moneyraw = deathPunishment.economy.getBalance(offlinePlayer)*moneyrate;
+									double moneyraw = DeathPunishment.economy.getBalance(offlinePlayer)*moneyrate;
 									BigDecimal bigDecimal = new BigDecimal(moneyraw);
 									double money = bigDecimal.setScale(digit,BigDecimal.ROUND_HALF_UP).doubleValue();
-									if (deathPunishment.economy.hasAccount(offlinePlayer)){
-										if (deathPunishment.economy.getBalance(offlinePlayer)>=money) {
-											deathPunishment.economy.withdrawPlayer(offlinePlayer, money);
+									if (DeathPunishment.economy.hasAccount(offlinePlayer)){
+										if (DeathPunishment.economy.getBalance(offlinePlayer)>=money) {
+											DeathPunishment.economy.withdrawPlayer(offlinePlayer, money);
 											amount = money;
 										}else {
-											deathPunishment.economy.withdrawPlayer(offlinePlayer, deathPunishment.economy.getBalance(offlinePlayer));
-											amount = deathPunishment.economy.getBalance(offlinePlayer);
+											DeathPunishment.economy.withdrawPlayer(offlinePlayer, DeathPunishment.economy.getBalance(offlinePlayer));
+											amount = DeathPunishment.economy.getBalance(offlinePlayer);
 										}
 									}else {
-										deathPunishment.economy.createPlayerAccount(offlinePlayer);
+										DeathPunishment.economy.createPlayerAccount(offlinePlayer);
 									}
 									break;
 								}
-								default: dp.getLogger().info("½ğÇ®µôÂäÄ£Ê½ÅäÖÃ´íÎó£¡ÒÑÈ¡ÏûµôÂä");break;
+								default: dp.getLogger().info("é‡‘é’±æ‰è½æ¨¡å¼é…ç½®é”™è¯¯ï¼å·²å–æ¶ˆæ‰è½");break;
 							}
 							player.sendMessage(String.format(messagehash.get("money"), ""+amount));
 							if (dp.getConfig().getDouble(worlddir+"DropMoney.Loot")>0.0){
@@ -173,7 +172,7 @@ public class dpPlayerDeathEventListener implements Listener{
 									ItemMeta meta = lootitem.getItemMeta();
 									meta.setDisplayName(""+amount);
 									List<String> lore = new ArrayList<>();
-									lore.add("¡ìc½ğÇ®µôÂä");
+									lore.add("Â§cé‡‘é’±æ‰è½");
 									lore.add(""+lootfinal);
 									meta.setLore(lore);
 									meta.setDisplayName(""+lootfinal);
@@ -185,11 +184,11 @@ public class dpPlayerDeathEventListener implements Listener{
 								}
 							}
 						}else {
-							dp.getLogger().info("¶ÁÈ¡½ğÇ®µôÂäÅäÖÃÊ±·¢Éú´íÎó£¡ÇëÉ¾³ıÅäÖÃÎÄ¼şÖØĞÂÉú³É£¡");
+							dp.getLogger().info("è¯»å–é‡‘é’±æ‰è½é…ç½®æ—¶å‘ç”Ÿé”™è¯¯ï¼è¯·åˆ é™¤é…ç½®æ–‡ä»¶é‡æ–°ç”Ÿæˆï¼");
 						}
 					}
 					
-					//µôÂäÎïÆ·
+					//æ‰è½ç‰©å“
 					
 					int count = dp.getConfig().getInt(worlddir+"DropSlots.Count");
 					List<?> protectedslots = dp.getConfig().getList(worlddir+"DropSlots.ProtectedSlots");
@@ -216,7 +215,7 @@ public class dpPlayerDeathEventListener implements Listener{
 											anyProtected = true;
 										}
 											
-										//Lore±£»¤
+										//Loreä¿æŠ¤
 											
 											
 										for (Object lore : protectedlores) {
@@ -231,7 +230,7 @@ public class dpPlayerDeathEventListener implements Listener{
 											}
 										}
 										
-										//¸½Ä§±£»¤
+										//é™„é­”ä¿æŠ¤
 										
 										for (Object enchantment: protectedenchantments) {
 											Enchantment ench = Enchantment.getByName((String) enchantment);
@@ -244,13 +243,13 @@ public class dpPlayerDeathEventListener implements Listener{
 											location.getWorld().dropItem(location, inventory.getItem(droppingslot));
 											droppedcount++;
 											if (inventory.getItem(droppingslot).getItemMeta().hasDisplayName()){
-												namestring += inventory.getItem(droppingslot).getItemMeta().getDisplayName()+"¡ìc*"+inventory.getItem(droppingslot).getAmount()+", ¡ìf";
+												namestring += inventory.getItem(droppingslot).getItemMeta().getDisplayName()+"Â§c*"+inventory.getItem(droppingslot).getAmount()+", Â§f";
 												if ((namestring.length()-namestringlns*10)>=10) {
 													namestring += "\\n";
 													namestringlns++;
 												}
 											}else {
-												namestring += dpFile.getLocaleName(inventory.getItem(droppingslot).getType(),locale)+"¡ìc*"+inventory.getItem(droppingslot).getAmount()+", ¡ìf";
+												namestring += dpFile.getLocaleName(inventory.getItem(droppingslot).getType(),locale)+"Â§c*"+inventory.getItem(droppingslot).getAmount()+", Â§f";
 												if ((namestring.length()-namestringlns*10)>=10) {
 													namestring += "\\n";
 													namestringlns++;
@@ -262,8 +261,8 @@ public class dpPlayerDeathEventListener implements Listener{
 									}
 									Slots.remove(ran1);
 								}else {
-									Bukkit.getServer().getLogger().info("Î´Ğ´±£»¤µÄÎïÆ·¸ñÊıÁ¿²»¹»£¡ÒÑÈ¡ÏûµôÂä£¡");
-									Bukkit.getServer().getLogger().info("Õâ¸öº¢×Ó²»»áËãÊıÄØ¡­¡­");
+									Bukkit.getServer().getLogger().info("æœªå†™ä¿æŠ¤çš„ç‰©å“æ ¼æ•°é‡ä¸å¤Ÿï¼å·²å–æ¶ˆæ‰è½ï¼");
+									Bukkit.getServer().getLogger().info("è¿™ä¸ªå­©å­ä¸ä¼šç®—æ•°å‘¢â€¦â€¦");
 								}
 							}
 							if (!dp.getConfig().getBoolean("LowVersionMode.Enabled")) {
@@ -278,7 +277,7 @@ public class dpPlayerDeathEventListener implements Listener{
 						}
 					}
 					
-					//µôÂä¾­Ñé
+					//æ‰è½ç»éªŒ
 					
 					if (dp.getConfig().getBoolean(worlddir+"DropExp.Enabled")){
 						
